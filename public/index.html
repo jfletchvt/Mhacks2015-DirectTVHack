@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World!</title>
+	<style>
+		.container {
+			background-color: black;
+			opacity: 0.1;
+			padding: 50px;
+			min-height: 350px;
+		}
+		.main-title, #key-down {
+			color:white;
+			font-size:72px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onerror = function(errorMsg, url, lineNumber){
+             console.log(errorMsg);
+		     return true;
+		   };
+	</script>
+
+	<script type="text/javascript">
+      // setResolution call has to be made in the head section!
+      if(!!navigator.setResolution)
+        navigator.setResolution(1280,720);
+    </script>
+
+
+</head>
+<body>
+	<div class="container">
+		<h2 style='color:white'>Hello Michelle!</h2>
+	</div>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
+
