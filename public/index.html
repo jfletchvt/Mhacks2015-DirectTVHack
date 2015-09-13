@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="/socket.io/socket.io.js"></script>
+
 	<title>Hello World!</title>
 	<style>
 		.container {
@@ -30,11 +32,12 @@
 
 
 </head>
-<body>
+<body onload="init()">
 	<div class="container">
 		<h2 style='color:white'>Hello Michelle!</h2>
 	</div>
 	<script type="text/javascript" src="app.js"></script>
+
 </body>
 </html>
 
