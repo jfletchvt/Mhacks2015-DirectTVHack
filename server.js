@@ -20,18 +20,8 @@ server.listen(4005, function() {
 });
 
 // Attach the socket.io server to the http server
-var io = sio.listen(server);c
+var io = sio.listen(server);
 
-/*// Define a message handler
-io.on('connection', function(socket) {
-    //If any clients move the image through touch or keypress, broadcast the
-    //updated position
-    socket.on('newTweet', function(data) {
-        socket.broadcast.emit('tweetReady', {
-            "update": data
-        });
-    });
-});*/
 
 var T = new Twit({
   consumer_key:         'yNRrasJ04WXQxBEcj3dSQvNMH',
@@ -100,9 +90,9 @@ function getTweets (err, data, response) {
         console.log('data.statuses');
         console.log(data.statuses[0]);
         console.log('gotTweets has statuses', data.statuses.length);
-        tweet = data.statuses[0];
+        json = {"tweet" : data.statuses[0], "time" : diff }
       	//Broadcast the head position to all clients
-  		io.emit("newTweet", tweet);
+  		io.emit("newTweet", json);
       }
   }
 }
