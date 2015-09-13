@@ -20,7 +20,7 @@ server.listen(4005, function() {
 });
 
 // Attach the socket.io server to the http server
-var io = sio.listen(server);
+var io = sio.listen(server);c
 
 /*// Define a message handler
 io.on('connection', function(socket) {

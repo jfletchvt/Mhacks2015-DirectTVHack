@@ -4,17 +4,64 @@
   <script src="/socket.io/socket.io.js"></script>
 
 	<title>Hello World!</title>
+
+	   <!-- <link rel="stylesheet" href="css/bootstrap.css" /> -->
+
 	<style>
+		/*=======================================
+		TWEET FEED STYLES
+		==================================================*/
+		.twt-wrapper .panel-body {						background-color: rgba(255, 255, 255, 0.6);;
+			padding: 1px 1px;
+		    max-height:650px;
+		    overflow:auto;
+		}
+		.twt-wrapper .media-list {
+			adding-left: 2px;
+		    padding-right: 2px;
+		}
+		.twt-wrapper .media-list .media img {
+		    width:64px;
+		    height:64px;
+		    border:2px solid #e5e7e8;
+		    float:left;
+
+		}
+		.twt-wrapper .media-list .media {
+		    border-bottom:1px dashed #efefef;
+		    padding-left: 10px;
+		    padding-right: 28px;
+		}
+
 		.container {
-			background-color: black;
-			opacity: 0.1;
+			background-color: transparent;
 			padding: 50px;
-			min-height: 350px;
+			
 		}
 		.main-title, #key-down {
-			color:white;
+			
 			font-size:72px;
 		}
+
+		.body {
+			background-color: red;
+			opacity: 0;
+		}
+		.col-lg-offset-9 {
+			margin-left: 75%;
+		}
+		.col-md-3{
+		  position: relative;
+		  min-height: 1px;
+		  padding-right: 15px;
+		  padding-left: 15px;
+		}
+		@media (min-width: 992px) {
+		.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+			float: left;
+		    width: 25%;
+		}
+
 	</style>
 
 	<script type="text/javascript">
@@ -33,10 +80,37 @@
 
 </head>
 <body onload="init()">
-	<div class="container">
-		<h2 style='color:white'>Hello Michelle!</h2>
-	</div>
-	<script type="text/javascript" src="app.js"></script>
+<!-- 	<div class="container">-->		
+		<div class="col-lg-offset-9 col-md-3">
+			<div class="twt-wrapper">
+			    <div class="panel panel-info">
+			        <div class="panel-body">
+			            <hr>
+			            <div class="media-list">
+			                <div class="media">
+			                    <a href="#" class="pull-left" style="float:left; padding-right : 10px;">
+			                        <img src="./1.png" alt="" class="img-circle">
+			                    </a>
+			                    <div class="media-body">
+			                        
+			                        <strong class="text-success">@ Rexona Kumi</strong>
+			                        <span class="text-muted pull-right">
+			                            <small class="text-muted">30 min ago</small>
+			                        </span>
+			                        <p class="pull-right">
+			                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			                            Lorem ipsum dolor sit amet, <a href="#"># consectetur adipiscing </a>.
+			                        </p>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	<!-- </div> -->
+
+<script type="text/javascript" src="app.js"></script>
 
 </body>
 </html>
