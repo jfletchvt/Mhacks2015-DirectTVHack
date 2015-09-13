@@ -14,6 +14,12 @@ function init() {
 function updateTweet(tweet, time) {
 	$('p').text(tweet.text);
 	$('.text-muted').text(parseInt(time*60)+" seconds ago");
-	$('.text-success').text("@"+tweet.user.name);
+	$('.text-success').text("@"+tweet.user.screen_name);
 	$('img').attr("src",tweet.user.profile_image_url);
+	$('.twt-wrapper').slideDown("slow", function(){
+		setTimeout(function(){
+		  $('.twt-wrapper').slideUp("slow");
+		}, 15000);
+	});
+
 }

@@ -85,7 +85,7 @@ function getTweets (err, data, response) {
   // console.log((curTime-tweetTime)/1000/60);
   diff = (curTime-tweetTime)/1000/60;
   console.log(diff);
-  if (data.hasOwnProperty('search_metadata') && diff <= 1 && !data.hasOwnProperty('retweeted_status')) {
+  if (data.hasOwnProperty('search_metadata') && diff <= 0.75 && !data.hasOwnProperty('retweeted_status')) {
       if (data.hasOwnProperty('statuses')) {
         console.log('data.statuses');
         console.log(data.statuses[0]);
