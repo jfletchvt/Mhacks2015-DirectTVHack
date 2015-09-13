@@ -87,8 +87,8 @@ function getTweets (err, data, response) {
 		  // console.log((curTime-tweetTime)/1000/60);
 		  diff = (curTime-tweetTime)/1000/60;
 		  console.log(diff);
-		  console.log(tweet.user.lang);
-		  if (data.hasOwnProperty('search_metadata') && diff <= 0.75 && !data.hasOwnProperty('retweeted_status')) {
+		  if (data.hasOwnProperty('search_metadata') && diff <= 0.65 && !data.hasOwnProperty('retweeted_status')) {
+			  console.log(tweet.text);
 	        // console.log('data.statuses');
 	        // console.log(data.statuses[0]);
 	        json = {"tweet" : data.statuses[0], "time" : diff }
@@ -115,7 +115,7 @@ function filterTweets(tweets){
 console.log('started ARCHIVER', new Date());
 var CronJob = require('cron').CronJob;
 if (CronJob) {
-  new CronJob('*/30 * * * * *', function () {
+  new CronJob('*/15 * * * * *', function () {
     console.log('starting cronned job', new Date());
     begin();
   }, null, true, 'America/New_York');

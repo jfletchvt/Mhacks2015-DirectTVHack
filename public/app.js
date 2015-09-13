@@ -19,7 +19,7 @@ function updateTweet(tweet, time) {
 	$('.twt-wrapper').slideDown("slow", function(){
 		setTimeout(function(){
 		  $('.twt-wrapper').slideUp("slow");
-		}, 15000);
+		}, 8000);
 	});
 
 }
