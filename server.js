@@ -77,24 +77,39 @@ function getTweets (err, data, response) {
     console.error('error in gotTweets', err);
     return;
   }
-
-  var curTime = new Date();
-  // console.log(curTime);
-  tweetTime = parseTwitterDate(data.statuses[0].created_at)
-  // console.log(parseTwitterDate(data.statuses[0].created_at));
-  // console.log((curTime-tweetTime)/1000/60);
-  diff = (curTime-tweetTime)/1000/60;
-  console.log(diff);
-  if (data.hasOwnProperty('search_metadata') && diff <= 0.75 && !data.hasOwnProperty('retweeted_status')) {
-      if (data.hasOwnProperty('statuses')) {
-        console.log('data.statuses');
-        console.log(data.statuses[0]);
-        console.log('gotTweets has statuses', data.statuses.length);
-        json = {"tweet" : data.statuses[0], "time" : diff }
-      	//Broadcast the head position to all clients
-  		io.emit("newTweet", json);
-      }
+  if (data.hasOwnProperty('statuses')) {
+	  var tweet = filterTweets(data.statuses);
+	  if (tweet != null){
+		  var curTime = new Date();
+		  // console.log(curTime);
+		  tweetTime = parseTwitterDate(tweet.created_at)
+		  // console.log(parseTwitterDate(data.statuses[0].created_at));
+		  // console.log((curTime-tweetTime)/1000/60);
+		  diff = (curTime-tweetTime)/1000/60;
+		  console.log(diff);
+		  console.log(tweet.user.lang);
+		  if (data.hasOwnProperty('search_metadata') && diff <= 0.75 && !data.hasOwnProperty('retweeted_status')) {
+	        // console.log('data.statuses');
+	        // console.log(data.statuses[0]);
+	        json = {"tweet" : data.statuses[0], "time" : diff }
+	      	//Broadcast the head position to all clients
+	  		io.emit("newTweet", json);
+		  }
+	  }
   }
+
+}
+//Filter English tweets
+function filterTweets(tweets){
+	var firstEngTweet = null;
+	for(var i=0; i<tweets.length; i++){
+		if(tweets[i].user.lang == 'en' || tweets[i].user.lang == 'en-gb') {
+			// console.log(tweets[i].user.lang);
+			firstEngTweet = tweets[i];
+			break;
+		}
+	}
+	return firstEngTweet;
 }
 
 console.log('started ARCHIVER', new Date());
